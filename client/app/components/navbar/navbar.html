@@ -1,0 +1,12 @@
+﻿<ul class="navbar__list clearfix">
+    <li class="navbar__item">
+        <a class="navbar__link" ng-href="/posts" ng-class="{'navbar__link--active': $ctrl.$route.current.activetab == 'posts'}">
+            <i class="material-icons">view_list</i>Posts
+        </a>
+    </li>
+    <li class="navbar__item">
+        <a class="navbar__link" ng-href="/audio" ng-class="{'navbar__link--active': $ctrl.$route.current.activetab == 'audio'}">
+            <i class="material-icons">audiotrack</i>Audio
+        </a>
+    </li>
+</ul>

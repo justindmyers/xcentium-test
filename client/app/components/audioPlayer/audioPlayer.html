@@ -1,0 +1,8 @@
+﻿<span class="audio-player__timer" ng-style="{width: $ctrl.durationPercentage + '%'}"></span>
+
+<div class="audio-player__container">
+    {{::$ctrl.title}}
+    <i class="material-icons" ng-click="$ctrl.play()" ng-show="$ctrl.isPaused">play_circle_filled</i>
+    <i class="material-icons" ng-click="$ctrl.pause()" ng-show="!$ctrl.isPaused">pause_circle_filled</i>
+</div>
+

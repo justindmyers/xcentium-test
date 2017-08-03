@@ -1,0 +1,36 @@
+﻿@import url('//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700')
+@import url('//fonts.googleapis.com/icon?family=Material+Icons')
+
+*
+    box-sizing: border-box
+
+body
+    background: #eef6fa
+    margin: 0
+    padding: 0
+    font-family: 'Roboto', 'sans-serif'
+
+.app
+    background: #fff
+    display: flex
+    flex-direction: column
+    width: 500px
+    margin: 10px auto
+    min-height: 500px
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .2)
+
+.app-view
+    background: #f6f6f6
+    display: flex
+    flex: 1
+
+clearfix()
+    zoom 1
+
+    &:after
+    &:before
+        content ""
+        display table
+
+    &:after
+        clear both

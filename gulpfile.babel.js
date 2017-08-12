@@ -3,7 +3,6 @@
 import gulp from 'gulp';
 import webpack from 'webpack';
 import path from 'path';
-import template from 'gulp-template';
 import gutil from 'gulp-util';
 import serve from 'browser-sync';
 import del from 'del';
@@ -32,15 +31,40 @@ let paths = {
         path.join(root, 'index.html')
     ],
     entry: [
-        'babel-polyfill',
         path.join(__dirname, root, 'app/app.js')
-    ]
+    ],
+    dest: path.join(__dirname, 'dist')
 };
 
+gulp.task('clean', (cb) => {
+    del([paths.dest]).then(function (paths) {
+        gutil.log("[clean]", paths);
+        cb();
+    })
+});
 
-gulp.task('dev', () => {
-    const config = require('./webpack.config');
+// use webpack.config.js to build modules
+gulp.task('dist', ['clean'], (cb) => {
+    const config = require('./webpack.dist.config');
+    config.entry.app = paths.entry;
 
+    webpack(config, (err, stats) => {
+        if (err) {
+            throw new gutil.PluginError("webpack", err);
+        }
+
+        gutil.log("[webpack]", stats.toString({
+            colors: colorsSupported,
+            chunks: false,
+            errorDetails: true
+        }));
+
+        cb();
+    });
+});
+
+gulp.task('serve', () => {
+    const config = require('./webpack.dev.config');
     config.entry.app = [
         // this modules required to make HRM working
         // it responsible for all this webpack magic
@@ -48,10 +72,10 @@ gulp.task('dev', () => {
         // application entry point
     ].concat(paths.entry);
 
-    let compiler = webpack(config);
+    var compiler = webpack(config);
 
     serve({
-        port: process.env.PORT || 63095,
+        port: process.env.PORT || 3000,
         open: false,
         server: {
             baseDir: root
@@ -71,4 +95,4 @@ gulp.task('dev', () => {
     });
 });
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['dev']);

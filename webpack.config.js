@@ -1,17 +1,21 @@
 ﻿var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: 'source-map',
     entry: {},
     module: {
-        loaders: [
-            { test: /\.js$/, exclude: [/node_modules/], loader: 'ng-annotate!babel' },
-            { test: /\.html$/, loader: 'raw' },
-            { test: /\.styl$/, loader: 'style!css!stylus' },
-            { test: /\.css$/, loader: 'style!css' }
-        ]
+        loaders: [{
+            test: /\.html$/,
+            loader: 'raw-loader'
+        }, ],
+        rules: [{
+            test: /\.(js)$/,
+            use: 'babel-loader',
+            exclude: /(node_modules)/
+        }]
     },
     plugins: [
         // Injects bundles in your index.html instead of wiring all manually.
@@ -30,9 +34,7 @@ module.exports = {
             minChunks: function (module, count) {
                 return module.resource && module.resource.indexOf(path.resolve(__dirname, 'client')) === -1;
             }
-        }),
-
-        new webpack.HotModuleReplacementPlugin()
+        })
     ],
     output: {
         filename: '[name].bundle.js',

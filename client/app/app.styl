@@ -1,36 +1,234 @@
-﻿@import url('//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700')
-@import url('//fonts.googleapis.com/icon?family=Material+Icons')
+﻿@import 'styles/variables.styl'
+@import 'styles/mixins.styl'
+@import 'styles/visibility.styl'
 
+/**
+ * Global Element Styles
+ */
 *
     box-sizing: border-box
 
 body
-    background: #eef6fa
+    background: $color-primary
+    color: $text-primary
+    font-family: $font-family-primary
+    font-size: 85%
+    line-height: 1.7
     margin: 0
     padding: 0
-    font-family: 'Roboto', 'sans-serif'
 
-.app
-    background: #fff
-    display: flex
-    flex-direction: column
-    width: 500px
-    margin: 10px auto
-    min-height: 500px
-    box-shadow: 0 1px 5px rgba(0, 0, 0, .2)
+h3
+    font-size: 24px
+    color: #79a0b9
+    margin: .5rem 0
+    line-height: 1.2
 
-.app-view
-    background: #f6f6f6
-    display: flex
-    flex: 1
+h4
+    font-size: 22px
+    line-height: 1.2
+    margin: .5rem 0
 
-clearfix()
-    zoom 1
+h5
+    font-size: 16px
+    line-height: 1.2
+    margin: .5rem 0
 
-    &:after
-    &:before
-        content ""
-        display table
+/**
+ * Generic Selector Styles
+ */
 
-    &:after
-        clear both
+.container
+    padding: 0 10px
+
+.row
+    padding: 30px 0
+
+    &--primary
+        background: $color-secondary
+
+    &--alt
+        color: $color-secondary
+        background: #2c6285
+        padding: 50px 0
+
+.button
+    border-radius: 20px
+    border: 2px solid $text-primary
+    color: $text-primary
+    font-weight: 600
+    text-decoration: none
+    padding: 3px 10px 5px
+
+    &--light
+        color: $color-secondary
+        border-color: $color-secondary
+
+    &--dark
+        background: #333
+        color: $color-secondary
+        padding: 8px 15px
+        border: none
+
+    &--rounded
+        border-radius: 5px
+
+.image-wrapper
+    line-height: 0
+
+    img
+        width 100%
+
+.menu
+    color: $color-secondary
+    font-size: 20px
+    float: left
+    line-height: 1
+    padding: 10px
+    cursor: pointer
+
+.logo-wrapper
+    line-height: 1
+
+.logo
+    height: 35px
+
+.carousel 
+    line-height: 0
+    
+    img
+        width: 100%
+
+.vcard
+    margin: 0
+    padding: 0
+
+/**
+ * Layout Styles
+ */
+.header
+    background: $color-primary
+    padding: 10px 0
+
+    &__top
+        display: flex
+        justify-content: space-between
+        margin-bottom: 20px
+
+    &__main
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding-right: 10px
+
+.nav
+    margin: 0
+    padding: 0
+    list-style-type: none
+
+    li
+        margin: 0
+
+    a
+        font-family: $font-family-alt
+        color: $color-secondary
+        text-decoration: none
+
+    &__item
+        color: $color-secondary
+
+    &--horizontal
+        display: flex
+
+        li
+            margin: 0 15px
+
+            &:first-child
+                margin-left: 0
+
+            &:last-child
+                margin-right: 0
+
+    &--main
+        text-transform: uppercase
+        font-weight: 600
+
+    &--icon
+        color: $color-secondary
+        align-items: center
+
+    &--text
+        font-weight: normal
+        text-transform: none
+
+    &--list
+        display: block
+
+        li
+            padding: 4px 0
+
+        a
+            color: $color-secondary
+
+.footer
+    color: $color-secondary
+
+.download
+    text-align: center
+    padding: 0 60px
+
+.copyright
+    font-size: 12px
+    text-align: center
+    padding-top: 40px
+
+    p
+        margin: 0
+
+@media only screen and (min-width: $breakpoint-sm)
+    .three-grid-xs
+        three-grid()
+
+    .two-grid-xs
+        two-grid()
+
+@media only screen and (min-width: $breakpoint-md)
+    .three-grid-md
+        three-grid()
+
+    .two-grid-md
+        two-grid()
+
+@media only screen and (min-width: $breakpoint-lg)
+    .four-grid-lg
+        four-grid()
+        
+    .three-grid-lg
+        three-grid()
+
+    .two-grid-lg
+        two-grid()
+
+    .logo
+        height: auto
+
+    .header
+        &__top
+            margin-bottom: 20px
+
+        &__main
+            padding-right: 0
+
+@media only screen and (min-width: $breakpoint-xl)
+    .container
+        width: $container-width
+        padding: 0
+        margin: 0 auto
+
+    .four-grid-xl
+        four-grid()
+
+    .three-grid-xl
+        three-grid()
+
+    .two-grid-xl
+        two-grid()

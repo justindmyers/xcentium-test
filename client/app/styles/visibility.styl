@@ -1,0 +1,37 @@
+.hidden
+    display: none !important
+
+@media only screen and (max-width: $breakpoint-sm - 1)
+    .hidden--xs
+        display: none !important
+
+@media only screen and (min-width: $breakpoint-sm)        
+    .hidden--gt-xs
+        display: none !important
+
+@media only screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 1)
+    .hidden--sm
+        display: none !important
+
+@media only screen and (min-width: $breakpoint-md)
+    .hidden--gt-sm
+        display: none !important
+
+@media only screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-lg - 1)
+    .hidden--md
+        display: none !important
+
+@media only screen and (min-width: $breakpoint-lg)
+    .hidden--gt-md
+        display: none !important
+
+@media only screen and (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl - 1)
+    .hidden--lg
+        display: none !important
+
+@media only screen and (min-width: $breakpoint-xl)
+    .hidden--xl
+        display: none !important
+
+    .hidden--gt-lg
+        display: none !important
